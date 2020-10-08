@@ -523,6 +523,7 @@ function resolveAndSanitizeRequestBodySchema(
         prop = resolveAndSanitizeRequestBodySchema(prop, v);
       }
     });
+    requestBodySchema = sanitizeReadonlyPropertiesFromRequired(requestBodySchema);
   } else if ('$ref' in requestBodySchema) {
     resolved = v.getSchema(requestBodySchema.$ref);
     if (resolved && resolved.schema) {
